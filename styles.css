@@ -1,14 +1,133 @@
+:root {
+  --background-image-url-02: url("./images/01-zuitt_2.png");
+  --background-image-url-04: url("./images/02-zuitt_4.png");
+  --background-image-url-08: url("./images/03-zuitt_8.png");
+  --background-image-url-16: url("./images/04-zuitt_16.png");
+  --background-image-url-32: url("./images/05-zuitt_32.png");
+  --background-image-url-64: url("./images/06-zuitt_64.png");
+  --background-image-url-128: url("./images/07-zuitt_128.png");
+  --background-image-url-256: url("./images/08-zuitt_256.png");
+  --background-image-url-512: url("./images/09-zuitt_512.png");
+  --background-image-url-1024: url("./images/10-zuitt_1024.png");
+  --background-image-url-2048: url("./images/11-zuitt_2048.png");
+  --background-image-url-4096: url("./images/12-zuitt_4096.png");
+  --background-image-url-8192: url("./images/13-zuitt_8192.png");
+}
+
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.score-label,
+.share-label {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.share-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.score-container,
+.share-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  text-align: center;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   background: linear-gradient(
     135deg,
-    #0f3443,
-    #34e89e
-  ); /* Dark teal to mint green */
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #9400d3
+  );
+  background-size: 400% 400%;
+  animation: rainbow 10s ease infinite;
   margin: 0;
   padding: 0;
-  color: #ffffff; /* White text for readability */
+  color: #ffffff;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#header {
+  background: linear-gradient(
+    135deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #9400d3
+  );
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+}
+
+#header h1 {
+  font-size: 4em;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#header h2 {
+  font-size: 1.5em;
+  margin: 10px 0;
+  font-weight: normal;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+#header hr {
+  border: none;
+  border-top: 2px solid #ffffff;
+  opacity: 0.5;
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+#score {
+  font-size: 2em;
+  font-weight: bold;
+  color: #f9d84b;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 hr {
@@ -21,15 +140,37 @@ hr {
 #board {
   width: 400px;
   height: 400px;
-  background-color: #2c3e50; /* Rich dark slate */
+  background: linear-gradient(
+    135deg,
+    #ff7f00,
+    #ff00ff,
+    #00ff00,
+    #00bfff,
+    #ff6347,
+    #8a2be2,
+    #ff1493
+  );
   border-radius: 15px;
   margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
-  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.4); /* Enhanced shadow for depth */
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease-in-out;
+  animation: rainbow-board 10s ease infinite;
+}
+
+@keyframes rainbow-board {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 #board:hover {
@@ -46,7 +187,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #34495e; /* Dark slate for empty tiles */
+  background-color: #34495e;
   color: #f9f6f2;
   transition: all 0.3s ease-in-out;
 }
@@ -57,78 +198,99 @@ hr {
 }
 
 .x2 {
-  background: linear-gradient(135deg, #e0e0e0, #d6d6d6); /* Light grey */
+  background: linear-gradient(135deg, #e0e0e0, #d6d6d6);
   color: #776e65;
+  background-image: var(--background-image-url-02);
+  background-size: 100% 100%;
 }
 
 .x4 {
-  background: linear-gradient(135deg, #d6c5ab, #c9b89d); /* Beige tones */
+  background: linear-gradient(135deg, #d6c5ab, #c9b89d);
   color: #776e65;
+  background-image: var(--background-image-url-04);
+  background-size: 100% 100%;
 }
 
 .x8 {
-  background: linear-gradient(
-    135deg,
-    #f4b17a,
-    #e8955d
-  ); /* Vibrant orange tones */
+  background: linear-gradient(135deg, #f4b17a, #e8955d);
   color: #f9f6f2;
+  background-image: var(--background-image-url-08);
+  background-size: 100% 100%;
 }
 
 .x16 {
-  background: linear-gradient(135deg, #f59765, #e4783f); /* Deeper orange */
+  background: linear-gradient(135deg, #f59765, #e4783f);
   color: #f9f6f2;
+  background-image: var(--background-image-url-16);
+  background-size: 100% 100%;
 }
 
 .x32 {
-  background: linear-gradient(135deg, #f67c5f, #e55a3d); /* Reddish-orange */
+  background: linear-gradient(135deg, #f67c5f, #e55a3d);
   color: #f9f6f2;
+  background-image: var(--background-image-url-32);
+  background-size: 100% 100%;
 }
 
 .x64 {
-  background: linear-gradient(135deg, #e24c2c, #c5381c); /* Bold red tones */
+  background: linear-gradient(135deg, #e24c2c, #c5381c);
   color: #f9f6f2;
+  background-image: var(--background-image-url-64);
+  background-size: 100% 100%;
 }
 
 .x128 {
-  background: linear-gradient(135deg, #f7da64, #eac74b); /* Gold tones */
+  background: linear-gradient(135deg, #f7da64, #eac74b);
   color: #f9f6f2;
+  background-image: var(--background-image-url-128);
+  background-size: 100% 100%;
 }
 
 .x256 {
-  background: linear-gradient(135deg, #f9d84b, #e6c039); /* Bright gold */
+  background: linear-gradient(135deg, #f9d84b, #e6c039);
   color: #f9f6f2;
+  background-image: var(--background-image-url-256);
+  background-size: 100% 100%;
 }
 
 .x512 {
-  background: linear-gradient(135deg, #edc950, #d3a737); /* Yellowish gold */
+  background: linear-gradient(135deg, #edc950, #d3a737);
   color: #f9f6f2;
+  background-image: var(--background-image-url-512);
+  background-size: 100% 100%;
 }
 
 .x1024 {
-  background: linear-gradient(135deg, #f2c237, #d3a017); /* Muted gold */
+  background: linear-gradient(135deg, #f2c237, #d3a017);
   color: #f9f6f2;
+  background-image: var(--background-image-url-1024);
+  background-size: 100% 100%;
 }
 
 .x2048 {
-  background: linear-gradient(135deg, #e5b91b, #c99a00); /* Dark gold */
+  background: linear-gradient(135deg, #e5b91b, #c99a00);
   color: #f9f6f2;
+  background-image: var(--background-image-url-2048);
+  background-size: 100% 100%;
   animation: glow 1s infinite alternate;
 }
 
 .x4096 {
-  background: linear-gradient(135deg, #ff5733, #ff3300); /* Fiery red */
+  background: linear-gradient(135deg, #ff5733, #ff3300);
   color: #f9f6f2;
+  background-image: var(--background-image-url-4096);
+  background-size: 100% 100%;
   animation: glow 1s infinite alternate;
 }
 
 .x8192 {
-  background: linear-gradient(135deg, #ff33cc, #cc0099); /* Magenta tones */
+  background: linear-gradient(135deg, #ff33cc, #cc0099);
   color: #f9f6f2;
+  background-image: var(--background-image-url-8192);
+  background-size: 100% 100%;
   animation: glow 1s infinite alternate;
 }
 
-/* Glow animation for high-value tiles */
 @keyframes glow {
   from {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
@@ -165,16 +327,15 @@ hr {
   }
 }
 
-/* Modal Styles */
 .modal {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
+  background-color: rgba(0, 0, 0, 0.6);
   justify-content: center;
   align-items: center;
 }
@@ -199,10 +360,6 @@ hr {
   cursor: pointer;
 }
 
-.close-btn:hover {
-  color: #ff6666;
-}
-
 @keyframes slide-down {
   from {
     transform: translateY(-50px);
@@ -211,5 +368,25 @@ hr {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media (max-width: 415px) {
+  #board {
+    margin-top: 8px;
+    width: 90vw;
+    max-width: 400px;
+    height: 90vh;
+    max-height: 400px;
+  }
+
+  .tile {
+    box-sizing: border-box;
+    width: 25%;
+    height: 25%;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
   }
 }

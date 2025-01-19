@@ -98,6 +98,8 @@ function handleSlide(e) {
     }
   }
 
+  document.getElementById("score").innerText = score;
+
   setTimeout(() => {
     if (hasLost()) {
       showModal("Game Over! You have lost the game. Game will restart.");
@@ -127,7 +129,7 @@ function slide(tiles) {
       // [2, 2]
       tiles[i] *= 2; // // [4, 2]
       tiles[i + 1] = 0; // [4, 0]
-      score += tiles[i];
+      score += tiles[i]; // adds the merged tile to the score
     }
   }
   tiles = filterZero(tiles); // [4]
@@ -344,9 +346,12 @@ function restartGame() {
     [0, 0, 0, 0],
   ];
 
+  score = 0;
   setTwo();
 
   // clear the board and remake
   // document.getElementById('board').innerHTML = '';
   // setGame();
 }
+
+
