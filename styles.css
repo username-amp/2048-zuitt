@@ -1,0 +1,215 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    #0f3443,
+    #34e89e
+  ); /* Dark teal to mint green */
+  margin: 0;
+  padding: 0;
+  color: #ffffff; /* White text for readability */
+}
+
+hr {
+  max-width: 480px;
+  border: none;
+  border-top: 2px solid #ffffff;
+  opacity: 0.5;
+}
+
+#board {
+  width: 400px;
+  height: 400px;
+  background-color: #2c3e50; /* Rich dark slate */
+  border-radius: 15px;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.4); /* Enhanced shadow for depth */
+  transition: all 0.3s ease-in-out;
+}
+
+#board:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.tile {
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
+  font-size: 25px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #34495e; /* Dark slate for empty tiles */
+  color: #f9f6f2;
+  transition: all 0.3s ease-in-out;
+}
+
+.tile:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.x2 {
+  background: linear-gradient(135deg, #e0e0e0, #d6d6d6); /* Light grey */
+  color: #776e65;
+}
+
+.x4 {
+  background: linear-gradient(135deg, #d6c5ab, #c9b89d); /* Beige tones */
+  color: #776e65;
+}
+
+.x8 {
+  background: linear-gradient(
+    135deg,
+    #f4b17a,
+    #e8955d
+  ); /* Vibrant orange tones */
+  color: #f9f6f2;
+}
+
+.x16 {
+  background: linear-gradient(135deg, #f59765, #e4783f); /* Deeper orange */
+  color: #f9f6f2;
+}
+
+.x32 {
+  background: linear-gradient(135deg, #f67c5f, #e55a3d); /* Reddish-orange */
+  color: #f9f6f2;
+}
+
+.x64 {
+  background: linear-gradient(135deg, #e24c2c, #c5381c); /* Bold red tones */
+  color: #f9f6f2;
+}
+
+.x128 {
+  background: linear-gradient(135deg, #f7da64, #eac74b); /* Gold tones */
+  color: #f9f6f2;
+}
+
+.x256 {
+  background: linear-gradient(135deg, #f9d84b, #e6c039); /* Bright gold */
+  color: #f9f6f2;
+}
+
+.x512 {
+  background: linear-gradient(135deg, #edc950, #d3a737); /* Yellowish gold */
+  color: #f9f6f2;
+}
+
+.x1024 {
+  background: linear-gradient(135deg, #f2c237, #d3a017); /* Muted gold */
+  color: #f9f6f2;
+}
+
+.x2048 {
+  background: linear-gradient(135deg, #e5b91b, #c99a00); /* Dark gold */
+  color: #f9f6f2;
+  animation: glow 1s infinite alternate;
+}
+
+.x4096 {
+  background: linear-gradient(135deg, #ff5733, #ff3300); /* Fiery red */
+  color: #f9f6f2;
+  animation: glow 1s infinite alternate;
+}
+
+.x8192 {
+  background: linear-gradient(135deg, #ff33cc, #cc0099); /* Magenta tones */
+  color: #f9f6f2;
+  animation: glow 1s infinite alternate;
+}
+
+/* Glow animation for high-value tiles */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 1);
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #2c3e50;
+  color: #f9f6f2;
+  border-radius: 10px;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  animation: slide-down 0.3s ease;
+}
+
+.close-btn {
+  color: #ffffff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #ff6666;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
